@@ -63,4 +63,4 @@ runs:
           ${{ steps.github-meta.outputs.bake-file }}
         targets: ${{ inputs.targets }}
         push: ${{ inputs.push }}
-        pull: $${{ inputs.pull }}
+        pull: ${{ inputs.pull }}
