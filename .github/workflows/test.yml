@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Generate Docker Bake Definition
-        uses: soramitsukhmer/docker-bake-action/create-bake@main
+        uses: ./create-bake
 
       - name: Inspect docker-bake.hcl
         run: cat docker-bake.hcl
@@ -37,7 +37,7 @@ jobs:
         run: cat Dockerfile
 
       - name: Build and Publish to Docker
-        uses: soramitsukhmer/docker-bake-action@main
+        uses: ./
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           targets: build
