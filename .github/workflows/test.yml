@@ -45,7 +45,7 @@ jobs:
           EOF
 
       - name: Build and Publish to Docker
-        uses: soramitsukhmer/publish-docker-action@v1
+        uses: soramitsukhmer/docker-bake-action@v1
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           targets: build
