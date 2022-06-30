@@ -1,0 +1,52 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - 'main'
+      - 'master'
+    tags:
+      - 'v*'
+
+env:
+  # Use docker.io for Docker Hub if empty
+  REGISTRY: ghcr.io
+  # github.repository as <account>/<repo>
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Generate docker-bake.hcl
+        run: |
+          cat <<EOF > docker-bake.hcl
+          target "docker-metadata-action" {}
+          target "build" {
+            inherits = ["docker-metadata-action"]
+            context = "./"
+            dockerfile = "Dockerfile"
+            platforms = [
+              "linux/amd64",
+              "linux/arm/v6",
+              "linux/arm/v7",
+              "linux/arm64"
+            ]
+          }
+          EOF
+
+      - name: Generate Dockerfile
+        run: |
+          cat <<EOF > Dockerfile
+          FROM alpine:3.14
+          EOF
+
+      - name: Build and Publish to Docker
+        uses: ./
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          targets: build
+          push: false
