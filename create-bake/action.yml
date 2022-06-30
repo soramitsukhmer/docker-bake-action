@@ -5,6 +5,12 @@ branding:
   icon: 'anchor'
   color: 'blue'
 
+inputs:
+  target:
+    description: Set generated target for Docker Bake Definition
+    required: false
+    default: 'build'
+
 runs:
   using: "composite"
   steps:
@@ -16,7 +22,7 @@ runs:
         target "docker-metadata-action" {}
         target "github-metadata-action" {}
 
-        target "build" {
+        target "${{ inputs.target }}" {
           inherits = ["docker-metadata-action", "github-metadata-action"]
           context = "./"
           dockerfile = "Dockerfile"
