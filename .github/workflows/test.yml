@@ -21,7 +21,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Generate docker-bake.hcl
+      - name: Generate Docker Bake Definition
         uses: soramitsukhmer/docker-bake-action/create-bake@main
 
       - name: Inspect docker-bake.hcl
