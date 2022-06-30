@@ -8,7 +8,7 @@ branding:
 runs:
   using: "composite"
   steps:
-    - name: Generate docker-bake.hcl
+    - name: Generate Docker Bake Definition
       shell: bash
       if: hashFiles('docker-bake.hcl') == ''
       run: |
