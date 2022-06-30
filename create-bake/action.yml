@@ -10,6 +10,10 @@ inputs:
     description: Set generated target for Docker Bake Definition
     required: false
     default: 'build'
+  platforms:
+    description: Target platforms
+    required: false
+    default: '"linux/amd64", "linux/arm64"'
 
 runs:
   using: "composite"
@@ -26,9 +30,6 @@ runs:
           inherits = ["docker-metadata-action", "github-metadata-action"]
           context = "./"
           dockerfile = "Dockerfile"
-          platforms = [
-            "linux/amd64",
-            "linux/arm64"
-          ]
+          platforms = [ ${{ inputs.platforms }} ]
         }
         EOF
