@@ -38,11 +38,17 @@ jobs:
           }
           EOF
 
+      - name: Inspect docker-bake.hcl
+        run: cat docker-bake.hcl
+
       - name: Generate Dockerfile
         run: |
           cat <<EOF > Dockerfile
           FROM alpine:3.14
           EOF
+
+      - name: Inspect Dockerfile
+        run: cat Dockerfile
 
       - name: Build and Publish to Docker
         uses: soramitsukhmer/docker-bake-action@main
