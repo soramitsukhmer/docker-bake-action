@@ -64,3 +64,6 @@ runs:
         targets: ${{ inputs.targets }}
         push: ${{ inputs.push }}
         pull: ${{ inputs.pull }}
+        set: |
+          *.cache-to=type=gha
+          *.cache-from=type=gha
