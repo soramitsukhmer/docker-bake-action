@@ -47,7 +47,7 @@ jobs:
       # Build and push Docker image with Buildx Bake
       # https://github.com/soramitsukhmer/docker-bake-action
       - name: Build and push
-        uses: soramitsukhmer/docker-bake-action@v1
+        uses: soramitsukhmer/docker-bake-action@v3
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           targets: build
