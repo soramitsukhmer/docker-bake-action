@@ -67,5 +67,5 @@ runs:
         push: ${{ inputs.push }}
         pull: ${{ inputs.pull }}
         set: |
-          *.cache-to=type=gha
-          *.cache-from=type=gha,mode=max
+          *.cache-to=type=gha,mode=max
+          *.cache-from=type=gha
