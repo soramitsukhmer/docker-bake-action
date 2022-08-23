@@ -68,4 +68,4 @@ runs:
         pull: ${{ inputs.pull }}
         set: |
           *.cache-to=type=gha
-          *.cache-from=type=gha
+          *.cache-from=type=gha,mode=max
