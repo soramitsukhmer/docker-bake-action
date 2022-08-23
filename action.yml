@@ -57,7 +57,7 @@ runs:
     # https://github.com/docker/bake-action
     - name: Build and push Docker image
       if: hashFiles('docker-bake.hcl') != ''
-      uses: docker/bake-action@v1
+      uses: docker/bake-action@v2
       with:
         files: |
           ./docker-bake.hcl
