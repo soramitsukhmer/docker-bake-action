@@ -13,7 +13,7 @@ inputs:
   platforms:
     description: Target platforms
     required: false
-    default: '"linux/amd64", "linux/arm64"'
+    default: '"linux/amd64"'
 
 runs:
   using: "composite"
