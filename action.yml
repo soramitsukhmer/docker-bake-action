@@ -51,7 +51,7 @@ runs:
     # https://github.com/dockerbakery/github-metadata-action
     - name: Extract GitHub Docker metadata
       id: github-meta
-      uses: dockerbakery/github-metadata-action@v1
+      uses: dockerbakery/github-metadata-action@v2
 
     # Build and push Docker image with Buildx Bake
     # https://github.com/docker/bake-action
